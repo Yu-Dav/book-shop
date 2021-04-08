@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Bookshop</title>
+    <link rel="icon" type="image/png" href="img/favicon/favicon.png" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="lib/animate.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!--  ***** BOOK INFO MODAL *****  -->
+    <div class="modal fade" id="bookInfoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="container-modal-info">
+                    <div class="modal-header">
+                        <h5 name="modal-title" class="modal-title">1984</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <span name="modal-img"><img name="modal-img" src="" alt="img of book"></span>
+                </div>
+                <div class="modal-body">
+                    <p name="modal-description"></p>
+                    <p>Id: <span name="modal-id"> </span></p>
+                    <p>Rating: <span name="modal-rating"></span></p>
+                    Change rating:<input class="rating-selector" onchange="onRatingChange(this.value)" type="number"
+                        min="1" max="10"><br>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ***** BOOK UPDATE MODAL ***** -->
+    <div class="modal fade" id="updatePriceModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Updating: &nbsp; <span></span></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label for="update-book-title">
+                        <h6> Book name: &nbsp;</h6>
+                    </label>
+                    <input type="text" class="form-control update-book-title" data-title="book-name"
+                        id="update-book-title" placeholder="Title">
+                    <label for="update-book-id">
+                        <h6> Book id: &nbsp;</h6>
+                    </label>
+                    <input type="text" class="form-control update-book-id" data-title="book-name" id="update-book-id"
+                        placeholder="id">
+                    <label for="update-book-price">
+                        <h6> Book price: &nbsp;</h6>
+                    </label>
+                    <input type="text" class="form-control update-book-price" data-title="book-name"
+                        id="update-book-price" placeholder="price">
+
+                    <div class="form-group">
+                        <label for="book-description">Book Description:</label>
+                        <textarea class="form-control update-book-desc" rows="3"
+                            placeholder="Book description"></textarea>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btn-book-update-submit">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ***** BOOK Remove MODAL ***** -->
+    <div class="modal fade" id="removeBookModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Book</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-remove-body mx-2">
+                    Are you sure you want to delete the following book? This can not be undone.
+                    <h5 name="modal-remove-title" class="modal-title">1984</h5>
+
+                    <p>Id: <span name="modal-remove-id"> </span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger confirm-book-remove">I am sure</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container main-section-container mt-5 mb-5">
+        <div class="container">
+
+            <h1 class="animated tada page-title mt-4" data-trans="proj-title">My Bookshop</h1>
+
+            <!-- ******** Add Book ******** -->
+            <section class="add-new-book mt-3">
+                <div class="container font-weight-normal">
+                    <form class="add-book">
+
+                        <ul class="list-inline form-group">
+                            <li class="list-inline-item mr-5">
+                                <h6 data-trans="add-book-name">Add a Book:</h6>
+                            <li class="list-inline-item">
+                                <label for="book-name">
+                                    <h6 data-trans="add-book-name"> Book name: &nbsp;</h6>
+                                </label>
+                                <input type="text" class="form-control new-book-title" data-title="book-name"
+                                    id="book-name" placeholder="Title" data-trans="add-book-name-placeholder">
+                            </li>
+                            <li class="list-inline-item">
+                                <label class="ml-2" for="book-price">
+                                    <h6 data-trans="add-book-price"> Price: &nbsp; </h6>
+                                </label>
+                                <input type="text" class="form-control new-book-price" data-title="book-price"
+                                    id="book-price" placeholder="Price" data-trans="add-book-price-placeholder">
+                            </li>
+                            <li class="list-inline-item">
+                                <button type="button" class="btn btn-add-book btn-secondary ml-4" type="submit"
+                                    data-trans="btn-add-new-book">Add</button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </section>
+
+            <!-- ******** Books Table ******** -->
+            <section class="book-table-container">
+                <div class="container">
+                    <table style="max-width: 100vw" class="table table-hover mt-1">
+                        <thead>
+                            <tr>
+                                <th class="table-dark">#</th>
+                                <th class="table-dark" data-trans="table-id">ID</th>
+                                <th class="table-dark sort-books" data-trans="table-title">Title</th>
+                                <th class="table-dark sort-books" data-trans="table-price">Price</th>
+                                <th class="table-dark" data-trans="table-cover">Cover</th>
+                                <th class="table-dark" colspan="3" data-trans="table-actions">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="font-weight-light ">
+                            <!-- Table injected here -->
+                        </tbody>
+                    </table>
+            </section>
+
+            <!-- ******** Mobile View ********* -->
+            <section class="mobile-ui">
+                <div class="container my-4">
+                    <div class="container-list-view">
+                        <ul class="list-group mobile-ui-list">
+                            <!-- ******** Inject HTML here ******** -->
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ******** Scroll Bar and Change Language ******** -->
+            <section class="scroll-bar">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="lang-selector form-group">
+                            <label for="exampleFormControlSelect1">Change Language:</label>
+                            <select class="form-control set-lang" id="lang-selector">
+                                <option value="en">English</option>
+                                <option value="de">Deutsch</option>
+                                <option value="he">עברית</option>
+                                <option value="ab">عربى</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <div class="container mb-4">
+                            <!-- Move forward -->
+                            <button type="button" class="btn btn-scroll-page btn-secondary"
+                                data-move="-1">&lt&lt</button>
+                            <button type="button" class="btn btn-info mx-4 btn-change-page">0</button>
+                            <!-- Move backwards -->
+                            <button type="button" class="btn btn-secondary btn-scroll-page"
+                                data-move="1">&gt&gt</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    <script src="lib/jquery.js"></script>
+    <script src="js/util.service.js"></script>
+    <script src="js/i18n-service.js"></script>
+    <script src="js/storage.service.js"></script>
+    <script src="js/book.service.js"></script>
+    <script src="js/book.controller.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("../img/bcg-img/bcg.jpeg");
+    /* background-color: #cccccc; */
+    margin: 0;
+}
+
+body.rtl {
+    direction: rtl;
+}
+
+.main-section-container {
+    background-color: rgba(255, 255, 255, 0.733);
+    border: 2px solid white;
+}
+
+
+.container .page-title {
+    display: flex;
+    justify-content: center;
+}
+
+.add-book {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+
+
+.add-book input,
+button {
+    padding: 0.75em;
+    text-align: left;
+}
+
+table img {
+    width: 10vh;
+    height: 10vh;
+    object-fit: contain;
+    /* object-position: center; */
+
+}
+
+
+.modal-book-details {
+    height: 100%;
+    width: 80%;
+    margin: auto;
+}
+
+[name=modal-img] img {
+    height: 30%;
+    width: 40%;
+}
+
+.sort-books {
+    cursor: pointer;
+}
+
+.scroll-bar .container {
+    display: flex;
+    justify-content: center;
+}
+
+.container-list-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 
+@media (max-width: 576px) {
+    .book-table-container {
+        max-width: 540px;
+    }
+} */
+
+@media (max-width: 994px) {
+    .form-group {
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+    }
+}
