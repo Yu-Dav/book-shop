@@ -17,7 +17,6 @@ console.log('gBooks =', gBooks);
 
 function SortBooks(sortBy) {
     gSortBy = sortBy;
-    renderBooksTable();
 }
 
 function changeRating(book, rating) {// move to controller 
@@ -30,7 +29,6 @@ function updateBook(bookId, bookPrice) {
     book.id = bookId;
     book.price = bookPrice;
     _saveBooksToStorage();
-    renderBooksTable();
 }
 
 function addBook(bookName, price, img) {
@@ -38,19 +36,15 @@ function addBook(bookName, price, img) {
     var newBook = _createBook(bookName, price, img);
     gBooks.unshift(newBook);
     _saveBooksToStorage();
-    renderBooksTable();
 }
 
 function removeBook(bookId) {
-    console.log('bookId =', bookId)
     var bookIdx = gBooks.findIndex(function (book) {
         return bookId === book.id
     })
-    console.log('bookIdx =', bookIdx)
     if (bookIdx < 0) return;
     gBooks.splice(bookIdx, 1);
     _saveBooksToStorage();
-    renderBooksTable();
 }
 
 function getBooks() {

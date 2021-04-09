@@ -45,7 +45,6 @@ table img {
 
 }
 
-
 .modal-book-details {
     height: 100%;
     width: 80%;
@@ -60,17 +59,11 @@ table img {
 .sort-books {
     cursor: pointer;
 }
+ .col-1 {
+     width: 40%;
+ }
 
-.scroll-bar .container {
-    display: flex;
-    justify-content: center;
-}
 
-.container-list-view {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 /* 
 @media (max-width: 576px) {

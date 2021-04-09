@@ -90,6 +90,18 @@ var gTrans = {
         de: 'bestätigen',
         he: 'לחץ להוסיף',
         ab: ''
+    },
+    'change-lang-title': {
+        en: 'Change Language:',
+        de: 'Sprache ändern:',
+        he: 'שינוי שפה:',
+        ab: 'تغيير اللغة:'
+    },
+    'btn-close': {
+        en: 'Close',
+        de: 'Schließen',
+        he: 'סגירה',
+        ab: 'غلق'
     }
 }
 

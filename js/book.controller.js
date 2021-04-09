@@ -10,13 +10,13 @@ $(document).ready(function () {
         onSortBooks(this);
     });
     $('.btn-book-info-modal').on('click', function () {
-        renderBookInfoModal(this);
+        onOpenInfoModal(this);
     });
     $('.btn-book-update-details').on('click', function () {
-        renderBookUpdateModal(this);
+        onOpenUpdateModal(this);
     });
     $('.btn-book-remove-modal').on('click', function () {
-        renderRemoveBookModal(this);
+        onOpenRemovalModal(this);
     });
     $('.set-lang').on('change', function () {
         onChangeLanguage(this);
@@ -24,8 +24,6 @@ $(document).ready(function () {
     $('.btn-book-update-submit').on('click', function () {
         onUpdateBookDetails(this);
     });
-
-
     // Scrolling
     $('.btn-scroll-page').on('click', function () {
         onPageScroll(this);
@@ -39,22 +37,20 @@ $(document).ready(function () {
 })
 
 var maxWidth = window.matchMedia('(min-width: 993px)')
-renderUI(maxWidth)
-maxWidth.addListener(renderUI)
+showUI(maxWidth)
+maxWidth.addListener(showUI)
 
-
-function renderUI(x) {
-    if (x.matches) { // If media query matches
+function showUI(width) {
+    if (width.matches) { // If media query matches
         $('.table').show();
         $('.mobile-ui').hide();
-        renderBooksTable()
+        // renderBooksTable()
     } else {
         $('.table').hide();
         $('.mobile-ui').show();
-        renderBooksMobile();
+        // renderBooksMobile();
     }
 }
-
 
 function renderBooksTable() {
     var counter = 0;
@@ -64,7 +60,7 @@ function renderBooksTable() {
         return `<tr>
         <td class="table-counter">${book.counter}.</td>
         <td>${book.id}</td>
-        <td>${book.title}</td>
+        <td class="table-book-title">${book.title}</td>
         <td>&euro;${book.price}</td>
         <td>${book.img}</td>
         <td><button type="button" class="btn btn-primary btn-book-info-modal" data-bookid="${book.id}" data-toggle="modal" data-target="#bookInfoModal" data-trans="btn-action-info">Info</button></td>
@@ -79,7 +75,7 @@ function renderBooksTable() {
 function renderBooksMobile() {
     var books = getBooks();
     var strHTMLs = books.map(function (book) {
-        return `<ul class="list-group">
+        return `<ul class="list-group mt-2">
         <li class="list-group-item list-group-item-dark"># <span>1</span> </li>
         <li class="list-group-item list-group-item-success">ID: <span>${book.id}</span> </li>
         <li class="list-group-item list-group-item-success" data-trans="table-title">Title:<span>${book.title}</span></li>
@@ -93,16 +89,7 @@ function renderBooksMobile() {
     $('.mobile-ui-list').html(strHTMLs.join(''));
 }
 
-function onRatingChange(rating) {
-    if (rating < 1 || rating > 10) return;
-    var bookID = $('[name=modal-id]').text();
-    var book = getBookById(bookID);
-    $('[name=modal-rating]').html(book.rating);
-    changeRating(book, rating);
-}
-
-// book info modal
-function renderBookInfoModal(el) {
+function onOpenInfoModal(el) {
     var bookId = el.dataset.bookid;
     var currBook = getBookById(bookId);
     $('[name=modal-title]').html(currBook.title);
@@ -111,25 +98,6 @@ function renderBookInfoModal(el) {
     $('[name=modal-id]').html(currBook.id);
     $('[name=modal-rating]').html(currBook.rating);
     $('.rating-selector').html(currBook.rating);
-}
-
-
-// book update modal
-function onUpdateBookDetails() {
-    var newTitle = $('.update-book-title').val();
-    var newId = $('.update-book-id').val();
-    var newprice = $('.update-book-price').val();
-    var newDesc = $('.update-book-desc').val();
-    if (!newTitle || !newId || !newprice || !newDesc) return;
-    console.log('updateing to =', newTitle, newId, newprice, newDesc)
-}
-
-// book remove modal
-function renderRemoveBookModal(el) {
-    var bookId = el.dataset.bookid;
-    var currBook = getBookById(bookId);
-    $('[name=modal-remove-title]').html(currBook.title);
-    $('[name=modal-remove-id]').html(currBook.id);
 }
 
 function onAddBook() {
@@ -141,13 +109,30 @@ function onAddBook() {
     addBook(bookName, price, img);
     $('.new-book-title').val('');
     $('.new-book-price').val('');
+    renderBooksTable();
+    renderBooksMobile();
+    console.log ('var =',$('.table-book-title'))
+    $('.table-book-title').addClass('animated', 'tada');
+    setTimeout(function () {
+        $('.table-book-title').removeClass('animated', 'tada');
+    }, 5000)
 }
 
+// BOOK REMOVAL
 function onRemoveBook() {
     var bookId = $('[name=modal-remove-id]').text();
     console.log('bookId =', bookId)
     removeBook(bookId);
     renderRemovedMsg();
+    renderBooksTable();
+    renderBooksMobile();
+}
+
+function onOpenRemovalModal(el) {
+    var bookId = el.dataset.bookid;
+    var currBook = getBookById(bookId);
+    $('[name=modal-remove-title]').html(currBook.title);
+    $('[name=modal-remove-id]').html(currBook.id);
 }
 
 function renderRemovedMsg() {
@@ -155,14 +140,32 @@ function renderRemovedMsg() {
     $('.modal-remove-body').addClass('my-4')
 }
 
-function renderBookUpdateModal(el) {
+// BOOK UPDATES: 
+function onOpenUpdateModal(el) {
     var bookId = el.dataset.bookid;
     var book = getBookById(bookId);
     $('.update-book-title').attr('placeholder', book.title)
     $('.update-book-id').attr('placeholder', book.id)
     $('.update-book-price').attr('placeholder', book.price)
     $('.update-book-desc').attr('placeholder', book.desc)
+}
 
+function onUpdateBookDetails() {
+    var newTitle = $('.update-book-title').val();
+    var newId = $('.update-book-id').val();
+    var newprice = $('.update-book-price').val();
+    var newDesc = $('.update-book-desc').val();
+    if (!newTitle || !newId || !newprice || !newDesc) return;
+    // renderBooksTable();
+    // renderBooksMobile();
+}
+
+function onRatingChange(rating) {
+    if (rating < 1 || rating > 10) return;
+    var bookID = $('[name=modal-id]').text();
+    var book = getBookById(bookID);
+    $('[name=modal-rating]').html(book.rating);
+    changeRating(book, rating);
 }
 
 function onChangeLanguage(el) {
@@ -178,6 +181,8 @@ function onChangeLanguage(el) {
 function onSortBooks(el) {
     var sortBy = el.innerText
     SortBooks(sortBy);
+    renderBooksTable();
+    renderBooksMobile();
 }
 
 // When scrolling through pages

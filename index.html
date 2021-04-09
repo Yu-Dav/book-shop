@@ -38,12 +38,12 @@
                         min="1" max="10"><br>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        data-trans="btn-close">Close</button>
                 </div>
             </div>
         </div>
     </div>
-
     <!-- ***** BOOK UPDATE MODAL ***** -->
     <div class="modal fade" id="updatePriceModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
@@ -79,7 +79,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        data-trans="btn-close">Close</button>
                     <button type="button" class="btn btn-primary btn-book-update-submit">Save changes</button>
                 </div>
             </div>
@@ -103,7 +104,8 @@
                     <p>Id: <span name="modal-remove-id"> </span></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        data-trans="btn-close">Close</button>
                     <button type="button" class="btn btn-danger confirm-book-remove">I am sure</button>
                 </div>
             </div>
@@ -111,7 +113,7 @@
     </div>
 
 
-    <div class="container main-section-container mt-5 mb-5">
+    <div class="container main-section-container mx-auto my-5">
         <div class="container">
 
             <h1 class="animated tada page-title mt-4" data-trans="proj-title">My Bookshop</h1>
@@ -162,7 +164,7 @@
                             </tr>
                         </thead>
                         <tbody class="font-weight-light ">
-                            <!-- Table injected here -->
+                            <!--  ******** Inject HTML here ******** -->
                         </tbody>
                     </table>
             </section>
@@ -179,11 +181,22 @@
             </section>
 
             <!-- ******** Scroll Bar and Change Language ******** -->
-            <section class="scroll-bar">
+            <section class="scroll-bar"></section>
+                <div class="container mb-4 mx-auto">
+                    <!-- Move forward -->
+                    <button type="button" class="btn btn-scroll-page btn-secondary" data-move="-1">&lt&lt</button>
+                    <button type="button" class="btn btn-info mx-4 btn-change-page">0</button>
+                    <!-- Move backwards -->
+                    <button type="button" class="btn btn-secondary btn-scroll-page" data-move="1">&gt&gt</button>
+            </div>
+            </section>
+
+            <section class="util-bar">
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-5">
                         <div class="lang-selector form-group">
-                            <label for="exampleFormControlSelect1">Change Language:</label>
+                            <label for="exampleFormControlSelect1" data-trans="change-lang-title">Change
+                                Language:</label>
                             <select class="form-control set-lang" id="lang-selector">
                                 <option value="en">English</option>
                                 <option value="de">Deutsch</option>
@@ -192,20 +205,20 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-7">
+                    <div class="col-1">
                         <div class="container mb-4">
-                            <!-- Move forward -->
-                            <button type="button" class="btn btn-scroll-page btn-secondary"
-                                data-move="-1">&lt&lt</button>
-                            <button type="button" class="btn btn-info mx-4 btn-change-page">0</button>
-                            <!-- Move backwards -->
-                            <button type="button" class="btn btn-secondary btn-scroll-page"
-                                data-move="1">&gt&gt</button>
+                            <div class="alert alert-warning" role="alert">
+                                Total # of books: <span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <div class="container mb-4">
+                            <button type="button" class="btn btn-secondary btn-scroll-page" data-move="1">Top</button>
                         </div>
                     </div>
                 </div>
             </section>
-
         </div>
     </div>
 
