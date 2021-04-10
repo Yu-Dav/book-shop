@@ -13,10 +13,6 @@
     <link rel="stylesheet" href="lib/animate.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;600&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;600&display=swap" rel="stylesheet">
 </head>
 
@@ -129,39 +125,47 @@
 
             <!-- ******** Add Book ******** -->
             <section class="add-new-book mt-3 text-center bold">
-                <div class="container font-weight-normal">
-                    <form class="add-book">
+                <div class="font-weight-normal d-flex flex-column">
+                    <div class="d-flex flex-row justify-content-center">
 
-                        <ul class="list-inline form-group">
-                            <li class="list-inline-item mr-5">
-                                <h6 data-trans="add-book-name">Add a Book:</h6>
-                            <li class="list-inline-item">
-                                <label for="book-name">
-                                    <h6 data-trans="add-book-name"> Book name: &nbsp;</h6>
-                                </label>
-                                <input type="text" class="form-control new-book-title" data-title="book-name"
-                                    id="book-name" placeholder="Title" data-trans="add-book-name-placeholder">
-                            </li>
-                            <li class="list-inline-item">
-                                <label class="ml-2" for="book-price">
-                                    <h6 data-trans="add-book-price"> Price: &nbsp; </h6>
-                                </label>
-                                <input type="text" class="form-control new-book-price" data-title="book-price"
-                                    id="book-price" placeholder="Price" data-trans="add-book-price-placeholder">
-                            </li>
-                            <li class="list-inline-item">
-                                <button type="button" class="btn btn-add-book btn-secondary ml-4" type="submit"
-                                    data-trans="btn-add-new-book">Add</button>
-                            </li>
-                        </ul>
-                    </form>
-                    <div class="change-view mt-3">
-                        <button type="button" class="btn btn-secondary btn-change-view" data-view="list"
-                            data-trans="list-view">
-                            List view</button>
-                        <button type="button" class="btn btn-secondary btn-change-view" data-view="table"
-                            data-trans="table-view">
-                            Table view</button>
+                        <div class="d-flex align-items-center ">
+                            <h6 data-trans="add-book-name">Add a Book:</h6>
+                        </div>
+
+                        <form class="add-book">
+                            <div class="d-flex flex-row justify-content-between mx-3">
+                                <div class="">
+                               
+                                    <input type="text" class="form-control new-book-title" data-title="book-name"
+                                        id="book-name" placeholder="Book Title" data-trans="add-book-name-placeholder">
+                                </div>
+                                <div class="ml-3">
+                                 
+                                    <input type="text" class="form-control new-book-price" data-title="book-price"
+                                        id="book-price" placeholder="Price" data-trans="add-book-price-placeholder">
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="d-flex align-items-center mr-5">
+                            <!-- <li class="list-inline-item"> -->
+                            <button type="button" class="btn btn-add-book btn-secondary ml-4" type="submit"
+                                data-trans="btn-add-new-book">Add</button>
+                            <!-- </li> -->
+                        </div>
+                    </div>
+
+                    <div class="change-view mt-4 d-flex flex-row justify-content-center">
+                        <div class="mx-3">
+                            <button type="button" class="btn btn-secondary btn-change-view" data-view="list"
+                                data-trans="list-view">
+                                List view</button>
+                        </div>
+                        <div class="mx-3">
+                            <button type="button" class="btn btn-secondary btn-change-view" data-view="table"
+                                data-trans="table-view">
+                                Table view</button>
+                        </div>
                     </div>
 
                 </div>
@@ -212,8 +216,8 @@
             </div>
             </section>
 
-            <section class="util-bar bold">
-                <div class="row w-100 justify-content-between">
+            <section class="bold">
+                <div class="row w-100 justify-content-between util-bar">
                     <div class="col-4 w-100">
                         <div class="lang-selector form-group">
                             <span style="white-space: nowrap"></span>
