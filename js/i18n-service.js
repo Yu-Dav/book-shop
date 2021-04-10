@@ -102,6 +102,30 @@ var gTrans = {
         de: 'Schließen',
         he: 'סגירה',
         ab: 'غلق'
+    },
+    'btn-action-info': {
+        en: 'Total books:',
+        de: 'Anzahl der Bücher:',
+        he: 'מספר הספרים:',
+        ab: 'عدد الكتب:'
+    },
+    'btn-go-to-top': {
+        en: 'Top',
+        de: 'nach oben',
+        he: 'למעלה',
+        ab: 'الى الاعلى'
+    },
+    'table-view': {
+        en: 'Table view',
+        de: 'Tabellenansicht',
+        he: 'תצוגת טבלה',
+        ab: 'عرض جدول'
+    },
+    'list-view': {
+        en: 'List view',
+        de: 'Listenansicht',
+        he: 'תצוגת רשימה',
+        ab: 'عرض القائمة'
     }
 }
 
@@ -110,12 +134,9 @@ var gCurrLang = 'en';
 function getTrans(transKey) {
     var keyTrans = gTrans[transKey]
     if (!keyTrans) return 'UNKNOWN';
-
     var txt = keyTrans[gCurrLang]
-
     // if not founf - use english
     if (!txt) txt = keyTrans['en']
-
     return txt;
 }
 

@@ -4,7 +4,6 @@
 
 body {
     background-image: url("../img/bcg-img/bcg.jpeg");
-    /* background-color: #cccccc; */
     margin: 0;
 }
 
@@ -17,38 +16,10 @@ body.rtl {
     border: 2px solid white;
 }
 
-
-.container .page-title {
-    display: flex;
-    justify-content: center;
-}
-
-.add-book {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: left;
-}
-
-
-.add-book input,
-button {
-    padding: 0.75em;
-    text-align: left;
-}
-
 table img {
     width: 10vh;
     height: 10vh;
     object-fit: contain;
-    /* object-position: center; */
-
-}
-
-.modal-book-details {
-    height: 100%;
-    width: 80%;
-    margin: auto;
 }
 
 [name=modal-img] img {
@@ -59,23 +30,30 @@ table img {
 .sort-books {
     cursor: pointer;
 }
- .col-1 {
-     width: 40%;
- }
 
+select.form-control {
+    display: inline-block
+}
 
+th {
+    width: auto;
+}
 
-/* 
-@media (max-width: 576px) {
-    .book-table-container {
-        max-width: 540px;
-    }
-} */
+th.min {
+    width: 1%;
+    white-space: nowrap;
+}
 
-@media (max-width: 994px) {
-    .form-group {
-        flex-direction: column;
-        display: flex;
-        align-items: center;
-    }
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2em;
+}
+
+.page-title {
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.bold {
+    font-weight:600;
+    letter-spacing: 0.05em;
 }
